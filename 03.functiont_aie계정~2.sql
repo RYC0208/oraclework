@@ -615,3 +615,30 @@ FROM EMPLOYEE;
 SELECT MAX(EMP_NAME), MAX(SALARY),MAX(HIRE_DATE) -- 단일행 함수와,그룹함수를 함께 쓸 수 없다
 FROM EMPLOYEE;
 --------------------------------------------------------------------------------
+/*
+    COUNT(*|컬럼|DISTINCT 컬럼) : 행의 갯수 반환
+    
+    COUNT(*) : 조회된 결과의 모든 행의 갯수 반환
+    COUNT(컬럼) : 제시한 컬럼의 NULL값을 제외한 행의 갯수 반환
+    COUNT(DISTINCT 컬럼) : 해당 컬럼값 중복을 제거한 후의 행의 갯수 반환
+*/
+--전체 사원 수 조회
+SELECT COUNT(*)
+FROM EMPLOYEE;
+
+--여성 사원 수 조회
+SELECT COUNT(*)
+FROM EMPLOYEE
+WHERE SUBSTR(EMP_NO,8,1)IN('2','4');
+
+--보너스를 받는 사원 수 조회
+SELECT COUNT(BONUS)
+FROM EMPLOYEE;
+
+--부서 배치를 받은 사원의 수
+SELECT COUNT (DEPT_CODE)
+FROM EMPLOYEE;
+
+--현재 사원들이 총 몇개의 부서에 배치되었는지
+SELECT COUNT(DISTINCT DEPT_CODE)
+FROM EMPLOYEE;
