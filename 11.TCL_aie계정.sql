@@ -1,100 +1,61 @@
-/* 
-    <TCL : TRANSCATION CONTROL LANGUAGE>
-    트랜잭션 제어어
-    
-    * 트랜젝션
-    - 데이터베이스의 논리적 연산 단위
-    - 데이터의 변경사항(DML)들을 하나의 트랜잭션에 묶어서 처리
-      DML문 한개를 수행할 때 트랜잭션이 존재하면 해당 트랜잭션에 같이 묶어서 처리
-      트랜잭션이 존재하지 않으면 트랜잭션을 만들어서 묶음
-      COMMIT하기 전까지의 변경 사항들을 하나의 트랜잭션에 담게됨
-    - 트랜잭션의 대상이 되는 SQL: INSERT,UPDATE,DELETE
-    
-    COMMIT(트랜잭션 종료 처리 후 확정)
-    ROLLBACK(트랜잭션 취소)
-    SAVEPOINT(임시저장)
-    
-    -COMMIT; 진행 : 한 트랙잭션에 담겨 있는 변경사항들을 실제 DB에 반영시키겠다는 의미 (후에 트랜잭션은 사라짐)
-    -ROLLBACK; 진행 : 한 트랜잭션에 담겨 있는 변경사항들은 삭제(취소)한 후 마지막 COMMIT 시점으로 돌아감
-    -SAVEPOINT 포인트명; 진행: 현재 이 시점에 해당 포인트명으로 임시저장점을 정의해두는 것
-               ROLLBACK진행시 전체 변경사항들을 삭제 하는게 아니라 일부만 롤백 가능
-               
-*/
-SELECT * FROM EMP_01;
-
---사번이 300인 사원 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID = 300;
-
---사번이 301인 사원 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID = 301;
---위의 트랜잭션에 DELETE 301 들어감
---실제 DB에 반영 안됨
-
-ROLLBACK; --300,301번이 되살아남
-
-----------------------------------------------------------------------------
--- 사번이 200인 사원 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID = 200;
-
-SELECT * FROM EMP_01;
-
-INSERT INTO EMP_01 VALUES(500,'남길동','기술지원부');
-
-COMMIT;
-
-ROLLBACK;
-----------------------------------------------------------------------------
--- 216,217,214 사원 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID IN(216,217,214);
-
--- 임시 저장점 만들기
-SAVEPOINT  SP;
-
-SELECT * FROM EMP_01;
-
---501번 추기
-
-INSERT INTO EMP_01 VALUES(501, '이세종', '총무부');
-
---사원 218번 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID = 218;
---임시 저장점 SP지점 까지만 ROLLBACK하고 싶으면
-ROLLBACK TO SP;
-
-SELECT * FROM EMP_01
-ORDER BY EMP_ID;
-
-COMMIT;
-
--------------------------------------------------------------------------------
 /*
-    *자동 COMMIT 되는 경우
-    -정상 종료
-    -DCL과 DDL명령문이 수행된 경우
+    <DCL : DATA CONTROL LANGUAGE>
+    ������ �����
+    �������� �ý��۱��� �Ǵ� ��ü�� ���ٱ��� �ο�(GRANT)�ϰų� ȸ��(REVOKE)�ϴ� ����
     
-    *자동 ROLLBACK 되는 경우
-    -비정상 종료
-    -전원 꺼짐. 정전. 컴퓨터 DOWN
+    > �ý��� ���� : DB�� �����ϴ� ����, ��ü���� ������ �� �ִ� ����
+    > ��ü���� ���� : Ư�� ��ü���� ������ �� �ִ� ����
 */
+----------------------------------------------------------------------------------------
+/*
+    1. �ý��� ������ ����
+       - CREATE SESSION : ������ �� �ִ� ����
+       - CREATE TABLE : ���̺��� ������ �� �ִ� ����
+       - CREATE VIEW : �並 ������ �� �ִ� ����
+       - CREATE SEQUENCE : ������ ������ �� �ִ� ����
+       ....
+*/
+-- 1.1 SAMPLE / sample �輺 ����
+ALTER SESSION set "_oracle_script" = true;
+create user sample identified by sample;
+-- ���ӱ����� ���� ���Ӹ���
 
---사번이 300인 사원 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID IN (300,500);
+-- 1.2 ������ ���� CREATE SESSION ���Ѻο�
+GRANT CREATE SESSION TO SAMPLE;
 
---사번이 302인 사원 삭제
-DELETE FROM EMP_01
-WHERE EMP_ID = (302);
-
--- DDL문
-CREATE TABLE TEST(
-   T_ID NUMBER
+/*
+-- SAMPLE�������� ���̺����� �Ұ� : ���Ѻο��� ���ؼ�
+CREATE TABLE TEST (
+    ID VARCHAR2(30),
+    NAME VARCHAR2(20)
 );
---DDL 구문을 실행하는 순간 COMMIT이 됨
+*/
+-- 1.3 ���̺��� ������ �� �ִ� CREATE TABLE ���� �ο�(���̺����� ����)
+GRANT CREATE TABLE TO SAMPLE;
 
-ROLLBACK;
---> DDL문(CREATE, ALTER ,DROPM)을 수행하는 순간 트랜잭션이 있던 변경 사항들은 무조건 COMMIT됨
+-- 1.4 TABLESPACE �Ҵ�(������ ���� �ȵ�)
+ALTER USER SAMPLE QUOTA 2M ON USERS;
+
+
+----------------------------------------------------------------------------------------
+/*
+    2. ��ü ���� ����
+        Ư�� ��ü�� �����Ͽ� ������ �� �ִ� ����
+        
+        ���� ����
+        SELECT      TABLE, VIEW, SEQUENCE
+        INSERT      TABLE, VIEW
+        UPDATE      TABLE, VIEW
+        DELETE      TABLE, VIEW
+        .....
+        
+        [ǥ����]
+        GRANT �������� ON Ư����ü TO ������;
+        - GRANT ���� ���� ON ������ ������ �ִ� USER.Ư����ü TO ��������USER;
+*/
+-- 2.1 SMAPLE�������� AIE���� EMPLOYEE���̺��� SELECT�� �� �ִ� ���Ѻο�
+GRANT SELECT ON AIE.EMPLOYEE TO SAMPLE;
+
+-- 2.2 SMAPLE�������� AIE������ DEPARTMENT���̺��� INSERT�� �� �ִ� ���Ѻο�
+GRANT INSERT ON AIE.DEPARTMENT TO SAMPLE;
+GRANT SELECT ON AIE.DEPARTMENT TO SAMPLE;

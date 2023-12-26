@@ -1,18 +1,18 @@
--- 1.3 ì˜ ê¶Œí•œë¶€ì—¬ì „ì—ëŠ” ì‹¤í–‰í•˜ë©´ ì˜¤ë¥˜. ê¶Œí•œë¶€ì—¬ í›„ì—ëŠ” ìƒì„± ê°€ëŠ¥
+-- 1.3 ÀÇ ±ÇÇÑºÎ¿©Àü¿¡´Â ½ÇÇàÇÏ¸é ¿À·ù. ±ÇÇÑºÎ¿© ÈÄ¿¡´Â »ý¼º °¡´É
 CREATE TABLE TEST (
     ID VARCHAR2(30),
     NAME VARCHAR2(20)
 );
 
--- 1.4 ì˜ ê¶Œí•œ ë¶€ì—¬ ì „ê³¼ í›„ ë¹„êµ
-INSERT INTO TEST VALUES('user01', 'í™ê¸¸ë™');
+-- 1.4 ÀÇ ±ÇÇÑ ºÎ¿© Àü°ú ÈÄ ºñ±³
+INSERT INTO TEST VALUES('user01', 'È«±æµ¿');
 
 --------------------------------------------------------
--- 2.1 ì˜ ê¶Œí•œ ë¶€ì—¬ ì „ê³¼ í›„ ë¹„êµ
+-- 2.1 ÀÇ ±ÇÇÑ ºÎ¿© Àü°ú ÈÄ ºñ±³
 SELECT * FROM AIE.EMPLOYEE;
 
--- 2.2 ê¶Œí•œ ë¶€ì—¬ í›„
-INSERT INTO AIE.DEPARTMENT VALUES('D0', 'ê´€ë¦¬ë¶€', 'L2');
+-- 2.2 ±ÇÇÑ ºÎ¿© ÈÄ
+INSERT INTO AIE.DEPARTMENT VALUES('D0', '°ü¸®ºÎ', 'L2');
 
 SELECT * FROM AIE.DEPARTMENT;
 COMMIT;

@@ -1,53 +1,53 @@
---  í•œì¤„ ì£¼ì„ (ctrl + /)
+--  ÇÑÁÙ ÁÖ¼® (ctrl + /)
 /*
-    ì—¬ëŸ¬ì¤„ ì£¼ì„
+    ¿©·¯ÁÙ ÁÖ¼®
     alt + shift + c
 */
 
--- ì»¤ì„œê°€ ê¹œë°•ê±°ë¦´ë•Œ ctrl + enter : ê·¸ ì¤„ ì‹¤í–‰
--- ë‚˜ì˜ ê³„ì • ë³´ê¸°
+-- Ä¿¼­°¡ ±ô¹Ú°Å¸±¶§ ctrl + enter : ±× ÁÙ ½ÇÇà
+-- ³ªÀÇ °èÁ¤ º¸±â
 show user;
 
--- ì‚¬ìš©ì ê³„ì • ì¡°íšŒ
+-- »ç¿ëÀÚ °èÁ¤ Á¶È¸
 select * from DBA_USERS;
 
--- ê³„ì • ë§Œë“¤ê¸°
--- [í‘œí˜„ë²•]   create user ì‚¬ìš©ìëª… identified by ë¹„ë°€ë²ˆí˜¸;
--- ì˜¤ë¼í´ 12ë²„ì „ ë¶€í„° ì¼ë°˜ì‚¬ìš©ìëŠ” c##ì„ ë¶™ì—¬ ì´ë¦„ì„ ì‘ëª…í•œë‹¤
+-- °èÁ¤ ¸¸µé±â
+-- [Ç¥Çö¹ı]   create user »ç¿ëÀÚ¸í identified by ºñ¹Ğ¹øÈ£;
+-- ¿À¶óÅ¬ 12¹öÀü ºÎÅÍ ÀÏ¹İ»ç¿ëÀÚ´Â c##À» ºÙ¿© ÀÌ¸§À» ÀÛ¸íÇÑ´Ù
 -- create user user1 IDENTIFIED BY 1234;
 create user c##user1 IDENTIFIED by user1234;
 create user c##user6 IDENTIFIED by "1234";
 
--- ì‚¬ìš©ì ì´ë¦„ì— c## ë¶™ì´ëŠ”ã„´ã„´ê²ƒì„ íšŒí”¼í•˜ëŠ” ë°©ë²•
+-- »ç¿ëÀÚ ÀÌ¸§¿¡ c## ºÙÀÌ´Â¤¤¤¤°ÍÀ» È¸ÇÇÇÏ´Â ¹æ¹ı
 ALTER SESSION set "_oracle_script" = true;
 create user user7 identified by user7;
 
--- ì‚¬ìš©ì ì´ë¦„ì€ ëŒ€ì†Œë¬¸ìë¥¼ ê°€ë¦¬ì§€ ì•ŠëŠ”ë‹¤
--- ì‹¤ì œ ì‚¬ìš©í•  ê³„ì • ìƒì„±
+-- »ç¿ëÀÚ ÀÌ¸§Àº ´ë¼Ò¹®ÀÚ¸¦ °¡¸®Áö ¾Ê´Â´Ù
+-- ½ÇÁ¦ »ç¿ëÇÒ °èÁ¤ »ı¼º
 create user aie identified by aie;
 
--- ê¶Œí•œ ìƒì„±
--- [í‘œí˜„ë²•] grant ê¶Œí•œ1, ê¶Œí•œ2, ... to ê³„ì •ëª…;
+-- ±ÇÇÑ »ı¼º
+-- [Ç¥Çö¹ı] grant ±ÇÇÑ1, ±ÇÇÑ2, ... to °èÁ¤¸í;
 grant RESOURCE, CONNECT to aie;
 
--- í…Œì´ë¸”ìŠ¤í˜ì´ìŠ¤ì— ì–¼ë§ˆë§Œí¼ì˜ ì˜ì—­ì„ í• ë‹¹í•  ê²ƒì¸ì§€ë¥¼ ë¶€ì—¬
+-- Å×ÀÌºí½ºÆäÀÌ½º¿¡ ¾ó¸¶¸¸Å­ÀÇ ¿µ¿ªÀ» ÇÒ´çÇÒ °ÍÀÎÁö¸¦ ºÎ¿©
 alter user aie default TABLESPACE users quota UNLIMITED on users;
 
--- í…Œì´ë¸”ìŠ¤í˜ì´ìŠ¤ì˜ ì˜ì—­ì„ íŠ¹ì • ìš©ëŸ‰ë§Œí¼ í• ë‹¹í•˜ë ¤ë©´
+-- Å×ÀÌºí½ºÆäÀÌ½ºÀÇ ¿µ¿ªÀ» Æ¯Á¤ ¿ë·®¸¸Å­ ÇÒ´çÇÏ·Á¸é
 alter user user7 quota 30M on users;
 
--- user ì‚­ì œ
--- [í‘œí˜„ë²•] drop user ì‚¬ìš©ìëª…;  => í…Œì´ë¸”ì´ ì—†ëŠ” ìƒíƒœ
--- [í‘œí˜„ë²•] drop user ì‚¬ìš©ìëª… cascade; => í…Œì´ë¸”ì´ ìˆì„ ë•Œ
+-- user »èÁ¦
+-- [Ç¥Çö¹ı] drop user »ç¿ëÀÚ¸í;  => Å×ÀÌºíÀÌ ¾ø´Â »óÅÂ
+-- [Ç¥Çö¹ı] drop user »ç¿ëÀÚ¸í cascade; => Å×ÀÌºíÀÌ ÀÖÀ» ¶§
 drop user c##user1;
 
---workbook ì‚¬ìš©ì ê³„ì • ë§Œë“¤ê¸°
+--workbook »ç¿ëÀÚ °èÁ¤ ¸¸µé±â
 ALTER SESSION set "_oracle_script" = true;
 create user workbook identified by workbook;
 grant RESOURCE, CONNECT to workbook;
 alter user workbook default TABLESPACE users quota UNLIMITED on users;
 
---DDL ì‚¬ìš©ì ê³„ì • ë§Œë“¤ê¸°
+--DDL »ç¿ëÀÚ °èÁ¤ ¸¸µé±â
 ALTER SESSION set "_oracle_script" = true;
 create user ddl identified by ddl;
 grant RESOURCE, CONNECT to ddl;

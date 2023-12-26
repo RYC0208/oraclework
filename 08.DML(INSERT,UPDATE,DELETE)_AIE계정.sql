@@ -1,57 +1,57 @@
 /*
-    * DML(DATE MANIPULATION LANGUGE) : ë°ì´í„° ì¡°ìž‘ì–¸ì–´
-       í…Œì´ë¸”ì— ê°’ì„ ì‚½ìž…(INSERT)í•˜ê±°ë‚˜, ìˆ˜ì •(UPDATE), ì‚­ì œ(DELETE), ê²€ìƒ‰(SELECT)í•˜ëŠ” êµ¬ë¬¸
+    * DML(DATE MANIPULATION LANGUGE) : µ¥ÀÌÅÍ Á¶ÀÛ¾ð¾î
+       Å×ÀÌºí¿¡ °ªÀ» »ðÀÔ(INSERT)ÇÏ°Å³ª, ¼öÁ¤(UPDATE), »èÁ¦(DELETE), °Ë»ö(SELECT)ÇÏ´Â ±¸¹®
 */
 --===================================================================================
 /*
     1. INSERT
-        í…Œì´ë¸”ì— ìƒˆë¡œìš´ í–‰ì„ ì¶”ê°€í•˜ëŠ” êµ¬ë¬¸
+        Å×ÀÌºí¿¡ »õ·Î¿î ÇàÀ» Ãß°¡ÇÏ´Â ±¸¹®
         
-        [í‘œí˜„ì‹]
-        1) INSERT INTO í…Œì´ë¸”ëª… VALUES(ê°’1, ê°’2, ê°’3,...)
-            í…Œì´ë¸”ì˜ ëª¨ë“  ì»¬ëŸ¼ì— ê°’ì„ ì§ì ‘ ë„£ì–´ í•œ í–‰ì„ ë„£ê³ ìž í• ë•Œ
-            ì»¬ëŸ¼ì˜ ìˆœì„œëŒ€ë¡œ VALUESì— ê°’ì„ ë„£ëŠ”ë‹¤
+        [Ç¥Çö½Ä]
+        1) INSERT INTO Å×ÀÌºí¸í VALUES(°ª1, °ª2, °ª3,...)
+            Å×ÀÌºíÀÇ ¸ðµç ÄÃ·³¿¡ °ªÀ» Á÷Á¢ ³Ö¾î ÇÑ ÇàÀ» ³Ö°íÀÚ ÇÒ¶§
+            ÄÃ·³ÀÇ ¼ø¼­´ë·Î VALUES¿¡ °ªÀ» ³Ö´Â´Ù
             
-            ë¶€ì¡±í•˜ê²Œ ê°’ì„ ë„£ì—ˆì„ ë•Œ => not enough valueì˜¤ë¥˜
-            ê°’ì„ ë” ë§Žì´ ë„£ì—ˆì„ ë•Œ => too many valuesì˜¤ë¥˜
+            ºÎÁ·ÇÏ°Ô °ªÀ» ³Ö¾úÀ» ¶§ => not enough value¿À·ù
+            °ªÀ» ´õ ¸¹ÀÌ ³Ö¾úÀ» ¶§ => too many values¿À·ù
 */
-INSERT INTO EMPLOYEE VALUES(300, 'ì´ì‹œì˜', '051117-1234567', 'lee_elk@elk.or.kr', '01023456789'
+INSERT INTO EMPLOYEE VALUES(300, 'ÀÌ½Ã¿µ', '051117-1234567', 'lee_elk@elk.or.kr', '01023456789'
                                                         , 'D1', 'J5', 3500000, 0.2, 200, SYSDATE, NULL, DEFAULT);
                                                         
-INSERT INTO EMPLOYEE VALUES(301, 'ì´ì‹œì˜', '051117-1234567', 'lee_elk@elk.or.kr', '01023456789'
+INSERT INTO EMPLOYEE VALUES(301, 'ÀÌ½Ã¿µ', '051117-1234567', 'lee_elk@elk.or.kr', '01023456789'
                                                         , 'D1', 'J5', 3500000, 0.2, 200, SYSDATE, NULL, DEFAULT, NULL);  
-      -- ê°’ì´ ë§Žê±°ë‚˜ ì ìœ¼ë©´ ì˜¤ë¥˜
+      -- °ªÀÌ ¸¹°Å³ª ÀûÀ¸¸é ¿À·ù
 
 ----------------------------------------------------------------------------------------------------
 /*
-    2) INSERT INTO í…Œì´ë¸”ëª…(ì»¬ëŸ¼ëª…, ì»¬ëŸ¼ëª…, ì»¬ëŸ¼ëª…...) VALUES(ê°’, ê°’, ê°’...)
-        í…Œì´ë¸”ì— ë‚´ê°€ ì„ íƒí•œ ì»¬ëŸ¼ì— ê°’ì„ ë„£ì„ ë•Œ ì‚¬ìš©
-        í–‰ë‹¨ìœ„ë¡œ ì¶”ê°€ ë˜ê¸° ë•Œë¬¸ì— ì„ íƒë˜ì§€ ì•Šì€ ì»¬ëŸ¼ì€ ê¸°ë³¸ì ìœ¼ë¡œ NULLì´ ë“¤ì–´ê°
-        => ë°˜ë“œì‹œ ë„£ì–´ì•¼ë  ì»¬ëŸ¼ : ê¸°ë³¸í‚¤, NOT NULLì¸ ì»¬ëŸ¼
-        ë‹¨, ê¸°ë³¸ê°’(DEFAULT)ê°€ ì§€ì •ë˜ì–´ ìžˆëŠ” ì»¬ëŸ¼ì€ NULLì´ ì•„ë‹Œ ê¸°ë³¸ê°’ì´ ë“¤ì–´ê°
+    2) INSERT INTO Å×ÀÌºí¸í(ÄÃ·³¸í, ÄÃ·³¸í, ÄÃ·³¸í...) VALUES(°ª, °ª, °ª...)
+        Å×ÀÌºí¿¡ ³»°¡ ¼±ÅÃÇÑ ÄÃ·³¿¡ °ªÀ» ³ÖÀ» ¶§ »ç¿ë
+        Çà´ÜÀ§·Î Ãß°¡ µÇ±â ¶§¹®¿¡ ¼±ÅÃµÇÁö ¾ÊÀº ÄÃ·³Àº ±âº»ÀûÀ¸·Î NULLÀÌ µé¾î°¨
+        => ¹Ýµå½Ã ³Ö¾î¾ßµÉ ÄÃ·³ : ±âº»Å°, NOT NULLÀÎ ÄÃ·³
+        ´Ü, ±âº»°ª(DEFAULT)°¡ ÁöÁ¤µÇ¾î ÀÖ´Â ÄÃ·³Àº NULLÀÌ ¾Æ´Ñ ±âº»°ªÀÌ µé¾î°¨
 */
 INSERT INTO EMPLOYEE(EMP_ID, EMP_NAME, EMP_NO, JOB_CODE,  HIRE_DATE) 
-        VALUES  (301, 'ê¹€ì§€ì°½','031017-1234567', 'J1', SYSDATE);
+        VALUES  (301, '±èÁöÃ¢','031017-1234567', 'J1', SYSDATE);
 
 INSERT INTO EMPLOYEE(HIRE_DATE, EMP_ID, JOB_CODE, EMP_NAME, EMP_NO) 
-        VALUES  (SYSDATE, 302, 'J1', 'í—ˆìˆ˜ì—°', '031017-1234567');
+        VALUES  (SYSDATE, 302, 'J1', 'Çã¼ö¿¬', '031017-1234567');
 
 SELECT * FROM EMPLOYEE; 
 
 ----------------------------------------------------------------------------------------------------
 /*
-    3) ì„œë¸Œì¿¼ë¦¬ë¥¼ ì´ìš©í•œ INSERT
-        VALUESì˜ ê°’ì„ ì§ì ‘ ëª…ì‹œí•˜ëŠ” ëŒ€ì‹  ì„œë¸Œì¿¼ë¦¬ë¡œ ì¡°íšŒëœ ê²°ê³¼ê°’ì„ ëª¨ë‘ INSERT ê°€ëŠ¥(ì—¬ëŸ¬í–‰ë„ ê°€ëŠ¥)
-        - INSERT INTO í…Œì´ë¸”ëª… (ì„œë¸Œì¿¼ë¦¬);
+    3) ¼­ºêÄõ¸®¸¦ ÀÌ¿ëÇÑ INSERT
+        VALUESÀÇ °ªÀ» Á÷Á¢ ¸í½ÃÇÏ´Â ´ë½Å ¼­ºêÄõ¸®·Î Á¶È¸µÈ °á°ú°ªÀ» ¸ðµÎ INSERT °¡´É(¿©·¯Çàµµ °¡´É)
+        - INSERT INTO Å×ÀÌºí¸í (¼­ºêÄõ¸®);
 */
--- í…Œì´ë¸” ìƒì„±
+-- Å×ÀÌºí »ý¼º
 CREATE TABLE EMP_01 (
     EMP_ID NUMBER,
     EMP_NAME VARCHAR2(20),
     DEPT_NAME VARCHAR2(35)
 );
 
--- ì „ì²´ ì‚¬ì›ì˜ ì‚¬ë²ˆ, ì‚¬ì›ëª…, ë¶€ì„œëª… ì¡°íšŒ
+-- ÀüÃ¼ »ç¿øÀÇ »ç¹ø, »ç¿ø¸í, ºÎ¼­¸í Á¶È¸
 SELECT EMP_ID, EMP_NAME, DEPT_TITLE
 FROM EMPLOYEE
 LEFT JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID);
@@ -63,16 +63,16 @@ INSERT INTO EMP_01
 
 ----------------------------------------------------------------------------------------------------
 /*
-    4) INSERT ALL : ë‘ê°œ ì´ìƒì˜ í…Œì´ë¸”ì— ê°ê° INSERTí•  ë•Œ
-        ë‹¨, ì´ë•Œ ì‚¬ìš©ë˜ëŠ” ì„œë¸Œì¿¼ë¦¬ê°€ ë™ì¼í•œ ê²½ìš°
+    4) INSERT ALL : µÎ°³ ÀÌ»óÀÇ Å×ÀÌºí¿¡ °¢°¢ INSERTÇÒ ¶§
+        ´Ü, ÀÌ¶§ »ç¿ëµÇ´Â ¼­ºêÄõ¸®°¡ µ¿ÀÏÇÑ °æ¿ì
         
-        [í‘œí˜„ì‹]
+        [Ç¥Çö½Ä]
         INSERT ALL
-        INTO í…Œì´ë¸”ëª…1 VALUES(ì»¬ëŸ¼ëª…, ì»¬ëŸ¼ëª…,...)
-        INTO í…Œì´ë¸”ëª…2 VALUES(ì»¬ëŸ¼ëª…, ì»¬ëŸ¼ëª…,...)
-            ì„œë¸Œì¿¼ë¦¬;
+        INTO Å×ÀÌºí¸í1 VALUES(ÄÃ·³¸í, ÄÃ·³¸í,...)
+        INTO Å×ÀÌºí¸í2 VALUES(ÄÃ·³¸í, ÄÃ·³¸í,...)
+            ¼­ºêÄõ¸®;
 */
--- í…Œì´ë¸” 2ê°œ ìƒì„±
+-- Å×ÀÌºí 2°³ »ý¼º
 CREATE TABLE EMP_DEPT
 AS SELECT EMP_ID, EMP_NAME, DEPT_CODE, HIRE_DATE
          FROM EMPLOYEE
@@ -83,7 +83,7 @@ AS SELECT EMP_ID, EMP_NAME, MANAGER_ID
          FROM EMPLOYEE
       WHERE 1=0;
 
--- ë¶€ì„œì½”ë“œê°€ D1ì¸ ì‚¬ì›ë“¤ì˜ ì‚¬ë²ˆ, ì‚¬ì›ëª…, ë¶€ì„œì½”ë“œ, ìž…ì‚¬ì¼, ì‚¬ìˆ˜ë²ˆí˜¸ ì¡°íšŒ
+-- ºÎ¼­ÄÚµå°¡ D1ÀÎ »ç¿øµéÀÇ »ç¹ø, »ç¿ø¸í, ºÎ¼­ÄÚµå, ÀÔ»çÀÏ, »ç¼ö¹øÈ£ Á¶È¸
 SELECT EMP_ID, EMP_NAME, DEPT_CODE, HIRE_DATE, MANAGER_ID
   FROM EMPLOYEE
 WHERE DEPT_CODE = 'D1';  
@@ -97,22 +97,22 @@ INTO EMP_MANAGER VALUES(EMP_ID, EMP_NAME, MANAGER_ID)
 
 ----------------------------------------------------------------------------------------------------
 /*
-    5) ì¡°ê±´ì„ ì œì‹œí•˜ì—¬ ê° í…Œì´ë¸”ì— INSERT ê°€ëŠ¥
+    5) Á¶°ÇÀ» Á¦½ÃÇÏ¿© °¢ Å×ÀÌºí¿¡ INSERT °¡´É
      
-     [í‘œí˜„ì‹]
+     [Ç¥Çö½Ä]
      INSERT ALL
-     WHEN ì¡°ê±´1 THEN
-            INTO í…Œì´ë¸”ëª…1 VALUES(ì»¬ëŸ¼ëª…, ì»¬ëŸ¼ëª…...)
-     WHEN ì¡°ê±´2 THEN
-            INTO í…Œì´ë¸”ëª…2 VALUES(ì»¬ëŸ¼ëª…, ì»¬ëŸ¼ëª…...)
+     WHEN Á¶°Ç1 THEN
+            INTO Å×ÀÌºí¸í1 VALUES(ÄÃ·³¸í, ÄÃ·³¸í...)
+     WHEN Á¶°Ç2 THEN
+            INTO Å×ÀÌºí¸í2 VALUES(ÄÃ·³¸í, ÄÃ·³¸í...)
 */
--- 2000ë…„ë„ ì´ì „ì— ìž…ì‚¬í•œ ì‚¬ì›ë“¤ì˜ ëŒ€í•œ ì •ë³´ë¥¼ ë‹´ì„ í…Œì´ë¸” ìƒì„±
+-- 2000³âµµ ÀÌÀü¿¡ ÀÔ»çÇÑ »ç¿øµéÀÇ ´ëÇÑ Á¤º¸¸¦ ´ãÀ» Å×ÀÌºí »ý¼º
 CREATE TABLE EMP_OLD
 AS SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
         FROM EMPLOYEE
      WHERE 1=0;
 
--- 2000ë…„ë„ ì´í›„ì— ìž…ì‚¬í•œ ì‚¬ì›ë“¤ì˜ ëŒ€í•œ ì •ë³´ë¥¼ ë‹´ì„ í…Œì´ë¸” ìƒì„±
+-- 2000³âµµ ÀÌÈÄ¿¡ ÀÔ»çÇÑ »ç¿øµéÀÇ ´ëÇÑ Á¤º¸¸¦ ´ãÀ» Å×ÀÌºí »ý¼º
 CREATE TABLE EMP_NEW
 AS SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
         FROM EMPLOYEE
@@ -129,79 +129,79 @@ SELECT EMP_ID, EMP_NAME, HIRE_DATE, SALARY
 --===================================================================================
 /*
     2. UPDATE
-        í…Œì´ë¸”ì— ì €ìž¥ë˜ì–´ ìžˆëŠ” ê¸°ì¡´ì˜ ë°ì´í„°ë¥¼ ìˆ˜ì •í•˜ëŠ” êµ¬ë¬¸
+        Å×ÀÌºí¿¡ ÀúÀåµÇ¾î ÀÖ´Â ±âÁ¸ÀÇ µ¥ÀÌÅÍ¸¦ ¼öÁ¤ÇÏ´Â ±¸¹®
         
-        [í‘œí˜„ì‹]
-        UPDATE í…Œì´ë¸”ëª…
-        SET ì»¬ëŸ¼ëª… = ë°”ê¿€ê°’,
-                ì»¬ëŸ¼ëª… = ë°”ê¿€ê°’,
+        [Ç¥Çö½Ä]
+        UPDATE Å×ÀÌºí¸í
+        SET ÄÃ·³¸í = ¹Ù²Ü°ª,
+                ÄÃ·³¸í = ¹Ù²Ü°ª,
                 ...
-        [WHERE ì¡°ê±´];
+        [WHERE Á¶°Ç];
         
-        * ì£¼ì˜í•  ì 
-           WHEREì ˆì´ ì—†ìœ¼ë©´ ëª¨ë“  í–‰ì˜ ë°ì´í„°ê°€ ë³€ê²½ë¨
+        * ÁÖÀÇÇÒ Á¡
+           WHEREÀýÀÌ ¾øÀ¸¸é ¸ðµç ÇàÀÇ µ¥ÀÌÅÍ°¡ º¯°æµÊ
 */
--- í…Œì´ë¸” ìƒì„±
+-- Å×ÀÌºí »ý¼º
 CREATE TABLE DEPT_COPY
 AS SELECT * FROM DEPARTMENT;
 
--- D3 ë¶€ì„œì˜ ë¶€ì„œëª…ì„ 'ì „ëžµê¸°íšíŒ€ìœ¼ë¡œ ìˆ˜ì •'
+-- D3 ºÎ¼­ÀÇ ºÎ¼­¸íÀ» 'Àü·«±âÈ¹ÆÀÀ¸·Î ¼öÁ¤'
 UPDATE DEPT_COPY
-SET DEPT_TITLE = 'ì „ëžµê¸°íšíŒ€';
+SET DEPT_TITLE = 'Àü·«±âÈ¹ÆÀ';
 
 ROLLBACK;
 
 UPDATE DEPT_COPY
-SET DEPT_TITLE = 'ì „ëžµê¸°íšíŒ€'
+SET DEPT_TITLE = 'Àü·«±âÈ¹ÆÀ'
 WHERE DEPT_ID = 'D3';
 
--- ë³µì‚¬ í…Œì´ë¸” ìƒì„±
+-- º¹»ç Å×ÀÌºí »ý¼º
 CREATE TABLE EMP_SALARY
 AS SELECT EMP_ID, EMP_NAME, DEPT_CODE, SALARY, BONUS
          FROM EMPLOYEE;
          
--- ë°•ì •ë³´ ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ 400ë§Œì›ìœ¼ë¡œ ë³€ê²½
+-- ¹ÚÁ¤º¸ »ç¿øÀÇ ±Þ¿©¸¦ 400¸¸¿øÀ¸·Î º¯°æ
 
--- ì¡°ì •ì—° ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ 410ë§Œìœ¼ë¡œ, ë³´ë„ˆìŠ¤ë¥¼ 0.25ë¡œ ë³€ê²½
+-- Á¶Á¤¿¬ »ç¿øÀÇ ±Þ¿©¸¦ 410¸¸À¸·Î, º¸³Ê½º¸¦ 0.25·Î º¯°æ
 
--- ì „ì²´ì‚¬ì›ì˜ ê¸‰ì—¬ë¥¼ ê¸°ì¡´ ê¸‰ì—¬ì˜ 10%ì¸ìƒí•œ ê¸ˆì•¡ìœ¼ë¡œ ë³€ê²½(ê¸°ì¡´ê¸‰ì—¬ * 1.1) = (ê¸°ì¡´ê¸‰ì—¬ + (ê¸°ì¡´ê¸‰ì—¬ * 0.1))
+-- ÀüÃ¼»ç¿øÀÇ ±Þ¿©¸¦ ±âÁ¸ ±Þ¿©ÀÇ 10%ÀÎ»óÇÑ ±Ý¾×À¸·Î º¯°æ(±âÁ¸±Þ¿© * 1.1) = (±âÁ¸±Þ¿© + (±âÁ¸±Þ¿© * 0.1))
 
 ----------------------------------------------------------------------------------------------------
 /*
-    2.1 UPDATEì‹œ ì„œë¸Œì¿¼ë¦¬ ì‚¬ìš©
+    2.1 UPDATE½Ã ¼­ºêÄõ¸® »ç¿ë
     
-    [í‘œí˜„ì‹]
-    UPDATE í…Œì´ë¸”ëª…
-    SET ì»¬ëŸ¼ëª… = (ì„œë¸Œì¿¼ë¦¬)
-    [WHERE ì¡°ê±´];
+    [Ç¥Çö½Ä]
+    UPDATE Å×ÀÌºí¸í
+    SET ÄÃ·³¸í = (¼­ºêÄõ¸®)
+    [WHERE Á¶°Ç];
 */
--- ì™•ì •ë³´ ì‚¬ì›ì˜ ê¸‰ì—¬ì™€ ë³´ë„ˆìŠ¤ê°’ì„ ì¡°ì •ì—°ì‚¬ì›ì˜ ê¸‰ì—¬ì™€ ë³´ë„ˆìŠ¤ê°’ìœ¼ë¡œ ë³€ê²½
+-- ¿ÕÁ¤º¸ »ç¿øÀÇ ±Þ¿©¿Í º¸³Ê½º°ªÀ» Á¶Á¤¿¬»ç¿øÀÇ ±Þ¿©¿Í º¸³Ê½º°ªÀ¸·Î º¯°æ
 UPDATE EMP_SALARY
 SET SALARY = (SELECT SALARY
                             FROM EMPLOYEE
-                          WHERE EMP_NAME = 'ì¡°ì •ì—°'),  
+                          WHERE EMP_NAME = 'Á¶Á¤¿¬'),  
         BONUS = (SELECT BONUS
                             FROM EMPLOYEE
-                          WHERE EMP_NAME = 'ì¡°ì •ì—°')
-WHERE EMP_NAME = 'ì™•ì •ë³´';                       
+                          WHERE EMP_NAME = 'Á¶Á¤¿¬')
+WHERE EMP_NAME = '¿ÕÁ¤º¸';                       
 
 UPDATE EMP_SALARY
 SET (SALARY, BONUS) = (SELECT SALARY, BONUS
                                         FROM EMPLOYEE
-                                        WHERE EMP_NAME = 'ì¡°ì •ì—°')
-WHERE EMP_NAME = 'ìž¥ì •ë³´'; 
+                                        WHERE EMP_NAME = 'Á¶Á¤¿¬')
+WHERE EMP_NAME = 'ÀåÁ¤º¸'; 
 
--- ì´ì‹œì˜, ê¹€ì§€ì°½, í—ˆìˆ˜ì—°, í˜„ì •ë³´, ì„ ìš°ì •ë³´ ì‚¬ì›ë“¤ì˜ ê¸‰ì—¬ì™€ ë³´ë„ˆìŠ¤ë¥¼ ì¡°ì •ì—°ì‚¬ì›ê³¼ ê°™ë„ë¡ ë³€ê²½
+-- ÀÌ½Ã¿µ, ±èÁöÃ¢, Çã¼ö¿¬, ÇöÁ¤º¸, ¼±¿ìÁ¤º¸ »ç¿øµéÀÇ ±Þ¿©¿Í º¸³Ê½º¸¦ Á¶Á¤¿¬»ç¿ø°ú °°µµ·Ï º¯°æ
 UPDATE EMP_SALARY
 SET (SALARY, BONUS) = (SELECT SALARY, BONUS
                                         FROM EMPLOYEE
-                                        WHERE EMP_NAME = 'ì¡°ì •ì—°')
-WHERE EMP_NAME IN ('ì´ì‹œì˜', 'ê¹€ì§€ì°½', 'í—ˆìˆ˜ì—°', 'í˜„ì •ë³´', 'ì„ ìš°ì •ë³´');
+                                        WHERE EMP_NAME = 'Á¶Á¤¿¬')
+WHERE EMP_NAME IN ('ÀÌ½Ã¿µ', '±èÁöÃ¢', 'Çã¼ö¿¬', 'ÇöÁ¤º¸', '¼±¿ìÁ¤º¸');
 
---==  JOINìœ¼ë¡œ ë°ì´í„° ë³€ê²½
--- ASIA ì§€ì—­ì—ì„œ ê·¼ë¬´í•˜ëŠ” ì‚¬ì›ë“¤ì˜ ë³´ë„ˆìŠ¤ë¥¼ 0.3ìœ¼ë¡œ ë³€ê²½
+--==  JOINÀ¸·Î µ¥ÀÌÅÍ º¯°æ
+-- ASIA Áö¿ª¿¡¼­ ±Ù¹«ÇÏ´Â »ç¿øµéÀÇ º¸³Ê½º¸¦ 0.3À¸·Î º¯°æ
 
--- ASIA ì§€ì—­ì„œ ê·¼ë¬´í•˜ëŠ” ì‚¬ì›ë“¤ ì¡°íšŒ
+-- ASIA Áö¿ª¼­ ±Ù¹«ÇÏ´Â »ç¿øµé Á¶È¸
 SELECT EMP_ID
 FROM EMPLOYEE
 JOIN DEPARTMENT ON (DEPT_CODE = DEPT_ID)
@@ -219,54 +219,54 @@ WHERE EMP_ID IN (SELECT EMP_ID
 ALTER TABLE EMPLOYEE ADD FOREIGN KEY(JOB_CODE) REFERENCES JOB;
 
 ----------------------------------------------------------------------------------------------------
--- UPDATEì‹œì—ë„ í•´ë‹¹ ì»¬ëŸ¼ì—ëŒ€í•œ ì œì•½ì¡°ê±´ì— ìœ„ë°° ë˜ë©´ ì•ˆë¨
--- ì‚¬ë²ˆì´ 200ë²ˆì¸ ì‚¬ì›ì˜ ì´ë¦„ NULL ë³€ê²½
+-- UPDATE½Ã¿¡µµ ÇØ´ç ÄÃ·³¿¡´ëÇÑ Á¦¾àÁ¶°Ç¿¡ À§¹è µÇ¸é ¾ÈµÊ
+-- »ç¹øÀÌ 200¹øÀÎ »ç¿øÀÇ ÀÌ¸§ NULL º¯°æ
 UPDATE EMPLOYEE
 SET EMP_NAME = NULL
-WHERE EMP_ID = 200;     -- NOT NULL ì œì•½ì¡°ê±´ ìœ„ë°°
+WHERE EMP_ID = 200;     -- NOT NULL Á¦¾àÁ¶°Ç À§¹è
 
--- ì™•ì •ë³´ì¸ ì‚¬ì›ì˜ ì§ê¸‰ì½”ë“œë¥¼ J9ë¡œ ë³€ê²½
+-- ¿ÕÁ¤º¸ÀÎ »ç¿øÀÇ Á÷±ÞÄÚµå¸¦ J9·Î º¯°æ
 UPDATE EMPLOYEE
 SET JOB_CODE = 'D9'
-WHERE EMP_NAME = 'ì™•ì •ë³´';     -- ì™¸ëž˜í‚¤ ì œì•½ì¡°ê±´ ìœ„ë°°
+WHERE EMP_NAME = '¿ÕÁ¤º¸';     -- ¿Ü·¡Å° Á¦¾àÁ¶°Ç À§¹è
 ----------------------------------------------------------------------------------------------------
 /*
     3.  DELETE
-         í…Œì´ë¸”ì— ì €ìž¥ëœ ë°ì´í„°ë¥¼ ì‚­ì œí•˜ëŠ” êµ¬ë¬¸(í–‰ë‹¨ìœ„ë¡œ ì‚­ì œ)
+         Å×ÀÌºí¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÏ´Â ±¸¹®(Çà´ÜÀ§·Î »èÁ¦)
          
-         [í‘œí˜„ì‹]
-         DELETE FROM í…Œì´ë¸”ëª…
-         [WHERE ì¡°ê±´];
+         [Ç¥Çö½Ä]
+         DELETE FROM Å×ÀÌºí¸í
+         [WHERE Á¶°Ç];
          
-         * ì£¼ì˜ì‚¬í•­
-         WHEREì ˆì˜ ì¡°ê±´ì„ ë„£ì§€ì•Šìœ¼ë©´ ëª¨ë“ í–‰ ì‚­ì œ
+         * ÁÖÀÇ»çÇ×
+         WHEREÀýÀÇ Á¶°ÇÀ» ³ÖÁö¾ÊÀ¸¸é ¸ðµçÇà »èÁ¦
 */
 
--- 'ì§€ì •ë³´'ì‚¬ì›ì„ ì‚­ì œ
+-- 'ÁöÁ¤º¸'»ç¿øÀ» »èÁ¦
 DELETE FROM EMPLOYEE;
 
 ROLLBACK;
 
 DELETE FROM EMPLOYEE
-WHERE EMP_NAME = 'ì§€ì •ë³´';
+WHERE EMP_NAME = 'ÁöÁ¤º¸';
 
 ROLLBACK;
 
 DELETE FROM EMPLOYEE
 WHERE EMP_ID = 300;
 
--- JOB_CODEê°€ J1ì¸ ë¶€ì„œ ì‚­ì œ
+-- JOB_CODE°¡ J1ÀÎ ºÎ¼­ »èÁ¦
 DELETE FROM JOB
 WHERE JOB_CODE = 'J1';
--- ì œì•½ì¡°ê±´ì— ìœ„ë°°ë˜ëŠ” ì‚­ì œëŠ” ì•ˆë¨
+-- Á¦¾àÁ¶°Ç¿¡ À§¹èµÇ´Â »èÁ¦´Â ¾ÈµÊ
 
 /*
-    * TRUNCATE : í…Œì´ë¸”ì˜ ì „ì²´ ë°ì´í„°ë¥¼ ì‚­ì œí•  ë•Œ ì‚¬ìš©í•˜ëŠ” êµ¬ë¬¸
-                            DELETEë³´ë‹¤ ìˆ˜í–‰ì†ë„ê°€ ë¹ ë¥´ë‹¤
-                            ë³„ë„ì˜ ì¡°ê±´ì œì‹œ ë¶ˆê°€, ROLLBACKë¶ˆê°€
+    * TRUNCATE : Å×ÀÌºíÀÇ ÀüÃ¼ µ¥ÀÌÅÍ¸¦ »èÁ¦ÇÒ ¶§ »ç¿ëÇÏ´Â ±¸¹®
+                            DELETEº¸´Ù ¼öÇà¼Óµµ°¡ ºü¸£´Ù
+                            º°µµÀÇ Á¶°ÇÁ¦½Ã ºÒ°¡, ROLLBACKºÒ°¡
                             
-       [í‘œí˜„ì‹]
-       TRUNCATE TABLE í…Œì´ë¸”ëª…;
+       [Ç¥Çö½Ä]
+       TRUNCATE TABLE Å×ÀÌºí¸í;
 */
 TRUNCATE TABLE EMP_SALARY;
-ROLLBACK;       -- ë¡¤ë°±ì•ˆë¨
+ROLLBACK;       -- ·Ñ¹é¾ÈµÊ
