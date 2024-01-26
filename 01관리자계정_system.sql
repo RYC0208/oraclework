@@ -17,7 +17,7 @@ select * from DBA_USERS;
 -- create user user1 IDENTIFIED BY 1234;
 create user c##user1 IDENTIFIED by user1234;
 create user c##user6 IDENTIFIED by "1234";
-
+create user mybatis IDENTIFIED by user1234;
 -- 사용자 이름에 c## 붙이는ㄴㄴ것을 회피하는 방법
 ALTER SESSION set "_oracle_script" = true;
 create user user7 identified by user7;
@@ -52,3 +52,13 @@ ALTER SESSION set "_oracle_script" = true;
 create user ddl identified by ddl;
 grant RESOURCE, CONNECT to ddl;
 alter user ddl default TABLESPACE users quota UNLIMITED on users;
+
+ALTER SESSION set "_oracle_script" = true;
+create user mybatis identified by mybatis;
+grant RESOURCE, CONNECT to mybatis;
+alter user mybatis default TABLESPACE users quota UNLIMITED on users;
+
+ALTER SESSION set "_oracle_script" = true;
+create user springboot identified by springboot;
+grant RESOURCE, CONNECT to springboot;
+alter user springboot default TABLESPACE users quota UNLIMITED on users;
